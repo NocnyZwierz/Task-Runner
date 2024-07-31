@@ -1,9 +1,8 @@
-/* styles.scss */
-
 $primary-color: #ffc107;
 $primary-color-hover: #e0a800;
 $background-color: #333;
 $font-color: #fff;
+$font-color-gray: #6d6c6c;
 
 body {
   font-family: 'Arial', sans-serif;
@@ -12,7 +11,7 @@ body {
 }
 
 .header {
-  background-image: url('https://i.postimg.cc/1RKqsLXB/pexels-cadomaestro-1170412.jpg'); // Ustaw ścieżkę do Twojego obrazu
+  background-image: url('https://i.postimg.cc/1RKqsLXB/pexels-cadomaestro-1170412.jpg');
   background-size: cover;
   background-position: center;
   color: $font-color;
@@ -26,45 +25,64 @@ body {
     position: absolute;
     top: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 2;
+
+    .brand-margin {
+      padding-left: 10%;
+    }
+
+    .toggler-margin {
+      margin-right: 20px;
+    }
 
     .nav-item {
-        .nav-link {
-          color: $font-color;
-          text-transform: uppercase;
-          &:hover {
-            color: $primary-color;
-          }
+      .nav-link {
+        color: $font-color;
+        text-transform: uppercase;
+        &:hover {
+          color: $primary-color;
         }
       }
+    }
+
+    .navbar-nav {
+      margin-right: 15%; 
+      .nav-item{
+        padding-left: 15px;
+      }
+    }
+
     .navbar-toggler {
-        border-color: $font-color; // Zmienia kolor obramowania przycisku na biały
-  
-        .navbar-toggler-icon {
-          background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); //kradzione z stackoverflow https://stackoverflow.com/questions/50761763/how-can-i-change-the-color-of-the-hamburger-in-bootstrap-4-from-the-given-link
-        }
+      border-color: $font-color; // Ustawia obramowanie przycisku na biały
+
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); // Ikona hamburgera w kolorze białym
+        // Kradione z stackoverflow https://stackoverflow.com/questions/50761763/how-can-i-change-the-color-of-the-hamburger-in-bootstrap-4-from-the-given-link
       }
+    }
 
     .navbar-brand {
-        color: $primary-color;
-     }
-    .navbar-collapse {
-        color: $primary-color;
+      color: $primary-color;
+      margin-left: 50px;
+      font-family: "Playwrite AR", cursive;
+      &:hover {//genialne i dużo przyjemniejsze niż w klasycznym css
+        color: $primary-color-hover;
+      }
     }
   }
 
   .nav-text {
     position: relative;
-    z-index: 2;
+    z-index: 1;
     padding-top: 150px;
 
     h1 {
-      font-size: 36px;
+      font-size: 24px;
       margin: 0;
     }
 
     h2 {
-      font-size: 24px;
+      font-size: 60px;
       margin: 10px 0 20px;
     }
   }
@@ -80,6 +98,114 @@ body {
 
     &:hover {
       background-color: $primary-color-hover;
+    }
+  }
+}
+
+.title {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  padding: 30px; 
+  text-align: center; 
+
+
+  h2 {
+    font-size: 50px;
+    margin: 40px 0 20px 0;
+    font-weight: bolder;
+  }
+
+  p {
+    color: $font-color-gray;
+    margin: 0;
+    font-family: "Edu AU VIC WA NT Hand", cursive;
+  }
+}
+
+.service {
+  background-color: #fff;
+
+  .service-inner {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 30px;
+
+    i {
+      color: $primary-color;
+      font-size: 60px;
+      padding:  20px;
+    }
+    .container {
+      flex: 1 1 30%;
+      max-width: 30%;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+  }
+}
+
+.portfolio {
+  background-color: #eeeeee;
+  padding: 30px 30px;
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-10px);
+    }
+
+    img {
+      max-height: 200px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      text-align: center;
+
+      h3 {
+        font-size: 20px;
+        margin-top: 15px;
+      }
+
+      p {
+        color: $font-color-gray;
+        margin: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-collapse {
+    background-color: transparent; 
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, background-color 0.5s ease;
+  }
+
+  .navbar-collapse.collapse.show {
+    background-color: $background-color; 
+    max-height: 500px;
+  }
+
+  .service .service-inner {
+    flex-direction: column; 
+    align-items: center;
+
+    .container {
+      max-width: 100%;
     }
   }
 }
